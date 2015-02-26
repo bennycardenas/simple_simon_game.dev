@@ -1,8 +1,159 @@
 <html>
 <head>
 	<title>Hello, Simon</title>
+<style type="text/css">
+
+#b1 {
+	background-color: red;
+}
+#b2 {
+	background-color: blue;
+}
+#b3 {
+	background-color: green;
+}
+#b4 {
+	background-color:#ffff00; 
+}
+.button {
+		height: 200px;
+     	width: 200px;
+     	font-size: 40;
+     	opacity: .3;
+}
+
+</style>
+
 </head>
+
 <body>
+
+<div class="container">
+	<div id="row one">
+		<button class="button" id="b1">1</button>
+		<button class="button" id="b2">2</button>
+	</div>
+	<br>
+	<div id="row two">
+		<button class="button" id="b3">3</button>
+		<button class="button" id="b4">4</button>
+	</div>
+</div>
+
+<script type="text/javascript">
+
+// attach event listener to each element
+// randomly select a square
+// listen for user input
+// check if user selection matches random
+// console.log (document.getElementsByClassName("button"))
+
+var squares = document.getElementsByClassName("button");
+
+var randomArray = []
+console.log(randomArray)
+var userSequence = []
+console.log(userSequence)
+
+var red = document.getElementById("b1");
+var blue = document.getElementById("b2");
+var green = document.getElementById("b3");
+var yellow = document.getElementById("b4");
+
+
+function getSimonSequence() {
+
+	var random = Math.floor(Math.random() * 4);
+	var randomSquare = squares[random];
+	// console.log(randomSquare);
+	
+	randomArray.push(random);
+
+	randomSquare.style.opacity = "1";
+	
+	randomArray.push(randomSquare.id);
+
+	return squares[random];
+	
+	// push new random CF
+	
+	// for (var=0; i = randomSquare.length; i++) {
+	// 	randomSquare[i]
+	// };
+
+}
+
+function animateSquare() {
+	
+	var randomSquare = getSimonSequence();
+		
+	var timeOut = setTimeout(function(){
+		randomSquare.style.opacity = ".3";		
+	}, 900);
+
+	// loop here
+	
+	// pull IDs 
+
+}
+
+animateSquare();
+
+// getSimonSequence();
+// var confirmed = alert('Want to start?'){
+// 	if (confirmed){
+// 	animateSquare(); 		
+// 	}
+// }
+
+var userInput = function(){
+	var input = userSelection.value;
+	return userSelection.push(input);
+}
+
+function userSelection(){
+	// console.log(event.target.id);
+	
+	userSequence.push(event.target.id);
+
+	return event.target.id;
+}
+
+red.addEventListener('click', userSelection ,false);
+blue.addEventListener('click', userSelection ,false);
+green.addEventListener('click', userSelection ,false);
+yellow.addEventListener('click', userSelection ,false);
+
+// ----  TO IMPLEMENT AT END  ----
+
+
+
+// if (userSequence == randomArray){
+// 	alert('Congrats!')
+// } else {
+// 	alert('Oops! You ran out of luck...')
+// }
+
+// ----------- CODE/IDEAS REPO FOLLOWS ----------------
+
+// ALTERNATE BAD CODE FOR EVENT LISTENER
+// var btnClickListener = function () {
+// 	for (i=0; i < randomArray.length; i++) {
+// 	document.getElementById("button").randomArray[0].push;
+// }
+// Button Up, Button Down
+
+// function add SelectionToSimonSequence(selection){
+// 	simon.sequence.push(selection)
+// }
+// function userSelection(event){
+// 	// if user's selection 
+// 	console.log(event.target.id)
+// }
+
+// var simonSequence = getSimonSequence()
+
+</script>
 
 </body>
 </html>
