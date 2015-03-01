@@ -52,6 +52,7 @@ var squares = document.getElementsByClassName("button");
 
 var randomArray = []
 console.log(randomArray)
+
 var userSequence = []
 console.log(userSequence)
 
@@ -60,63 +61,77 @@ var blue = document.getElementById("b2");
 var green = document.getElementById("b3");
 var yellow = document.getElementById("b4");
 
+// start game according to Ryan O
+// function start(){
+// 	randomArray = [];
+// }
 
-function getSimonSequence() {
 
+function simonMove() {
 	var random = Math.floor(Math.random() * 4);
 	var randomSquare = squares[random];
 	// console.log(randomSquare);
 	
-	randomArray.push(random);
-
-	randomSquare.style.opacity = "1";
-	
-	randomArray.push(randomSquare.id);
-
+	randomArray.push(randomSquare);
+	consecutiveArrayFlashing();
 	return squares[random];
-	
-	// push new random CF
-	
-	// for (var=0; i = randomSquare.length; i++) {
-	// 	randomSquare[i]
-	// };
-
 }
 
-function animateSquare() {
+function consecutiveArrayFlashing() {
 	
-	var randomSquare = getSimonSequence();
+	var i=0;
+	var interval = setInterval(function(){
 		
-	var timeOut = setTimeout(function(){
-		randomSquare.style.opacity = ".3";		
-	}, 900);
+		if (i>=randomArray.length){
+			clearInterval(interval);	
+		
+		} else {
 
-	// loop here
-	
-	// pull IDs 
+			flash(randomArray[i]);
+			i++;
+		}	
+		}, 900);
+	}
 
+function comparison() {
+
+		if (randomArray == userSequence) {
+			simonMove()
+		} else {
+
+		}
 }
 
-animateSquare();
-
-// getSimonSequence();
-// var confirmed = alert('Want to start?'){
-// 	if (confirmed){
-// 	animateSquare(); 		
-// 	}
+// make simonMove flash
+// 		use opacity as part of the automation
+// function simonFlash() {
 // }
+
+function flash(element){
+	console.log(element);
+	
+	element.style.opacity = "1";
+	// console.log(this.target)
+
+	var timeOut = setTimeout(function(){
+		element.style.opacity = ".3";		
+	}, 900);
+}
 
 var userInput = function(){
 	var input = userSelection.value;
 	return userSelection.push(input);
 }
 
-function userSelection(){
+function userSelection(event){
 	// console.log(event.target.id);
-	
 	userSequence.push(event.target.id);
+	// flash();
+	console.log(event);
 
-	return event.target.id;
+	flash(event.target);
+	
+	return flash(event.target);
 }
 
 red.addEventListener('click', userSelection ,false);
@@ -124,9 +139,11 @@ blue.addEventListener('click', userSelection ,false);
 green.addEventListener('click', userSelection ,false);
 yellow.addEventListener('click', userSelection ,false);
 
+// FUNCTION TO CALL
+// simonMove()
+
+
 // ----  TO IMPLEMENT AT END  ----
-
-
 
 // if (userSequence == randomArray){
 // 	alert('Congrats!')
@@ -135,6 +152,31 @@ yellow.addEventListener('click', userSelection ,false);
 // }
 
 // ----------- CODE/IDEAS REPO FOLLOWS ----------------
+
+// var interval = setInerval(getSimonSequence, 900);
+// function animateSquare() {
+	
+// 	var randomSquare = getSimonSequence();
+		
+// 	var timeOut = setTimeout(function(){
+// 		randomSquare.style.opacity = ".3";		
+// 	}, 900);
+
+// 	// for (var i=0; i=getSimonSequence()+1; i++){
+// 	// 	randomSquare[i];
+// 	// }
+
+// 	// loop here
+// 	// pull IDs 
+// }
+
+// animateSquare();
+// getSimonSequence();
+// var confirmed = alert('Want to start?'){
+// 	if (confirmed){
+// 	animateSquare(); 		
+// 	}
+// }
 
 // ALTERNATE BAD CODE FOR EVENT LISTENER
 // var btnClickListener = function () {
