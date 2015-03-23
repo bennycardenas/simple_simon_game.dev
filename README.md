@@ -1,3 +1,3 @@
 # Simple Simon
 
-Simple Simon in pure JavaScript
+A basic Simon Says color matching game in pure JavaScript
